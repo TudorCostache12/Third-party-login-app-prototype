@@ -5,16 +5,16 @@ from dotenv import load_dotenv
 result = load_dotenv("OAuthClientData.env")
 print (result)
 
-CLIENT_ID = os.getenv("CLIENT_ID")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+CLIENT_ID = os.getenv("CLIENT_ID2")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET2")
 TENANT_ID = os.getenv("TENANT_ID")
 REDIRECT_URI = os.getenv("REDIRECT_URI")
 SCOPES = os.getenv("SCOPES").split(",")
 
-AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
+AUTHORITY = f"https://login.microsoftonline.com/common"
 AUTHORIZE_ENDPOINT = f"{AUTHORITY}/oauth2/v2.0/authorize"
 TOKEN_ENDPOINT = f"{AUTHORITY}/oauth2/v2.0/token"
-
+OIDC_CONFIG_URL = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
 
 JWT_EXPIRE_DAYS = int(os.getenv("JWT_EXPIRE_DAYS"))
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")

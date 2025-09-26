@@ -1,7 +1,5 @@
 <p>callback works!</p>
-@if (user) {
+@if (!loading && user) {
   <h2>Bun venit, {{ user.name }}</h2>
   <p>Email: {{ user.email }}</p>
-} @else {
-  <p>{{ errorMessage }}</p>
 }

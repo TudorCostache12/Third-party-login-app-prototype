@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class LoginComponent {
 
   login() {
-    window.location.href = 'http://localhost:8000/login';
+    window.location.href = 'https://localhost:8000/login';
   }
 
 }

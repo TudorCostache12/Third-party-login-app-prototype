@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-callback',
@@ -7,21 +8,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CallbackComponent implements OnInit {
   user: any = null;
-  errorMessage: string | null = null;
+ loading = true;
 
-  constructor(private https: HttpClient) {}
 
-  ngOnInit() {
-    this.https.get('http://localhost:8000/me', { withCredentials: true })
-      .subscribe({
-        next: (res) => {
-          this.user = res;
-          this.errorMessage = null;
-        },
-        error: (err) => {
-          console.error('Not authenticated', err);
-          this.errorMessage = 'Nu ești autentificat sau tokenul este invalid.';
-        }
-      });
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const resolvedData = this.route.snapshot.data['auth'];
+
+    if (resolvedData) {
+      this.user = resolvedData;
+    }
+
+    this.loading = false;
   }
 }
