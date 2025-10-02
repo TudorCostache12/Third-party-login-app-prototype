@@ -10,11 +10,12 @@ CLIENT_SECRET = os.getenv("CLIENT_SECRET2")
 TENANT_ID = os.getenv("TENANT_ID")
 REDIRECT_URI = os.getenv("REDIRECT_URI")
 SCOPES = os.getenv("SCOPES").split(",")
-
+FRONTEND_LOGIN_URL = os.getenv("FRONTEND_LOGIN_URL")
 AUTHORITY = f"https://login.microsoftonline.com/common"
 AUTHORIZE_ENDPOINT = f"{AUTHORITY}/oauth2/v2.0/authorize"
 TOKEN_ENDPOINT = f"{AUTHORITY}/oauth2/v2.0/token"
 OIDC_CONFIG_URL = "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration"
+FRONTEND_CALLBACK_URL = os.getenv("FRONTEND_CALLBACK_URL")
 
 JWT_EXPIRE_DAYS = int(os.getenv("JWT_EXPIRE_DAYS"))
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")

@@ -1,0 +1,24 @@
+
+services:
+  backend:
+    build: ./backend
+    container_name: fastapi-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./certs:/certs:ro
+      - ./backend/OAuthClientData.env:/OAuthClientData.env:ro
+
+  frontend:
+    build: ./frontend
+    container_name: angular-frontend
+    ports:
+      - "443:443"
+    volumes:
+      - ./certs:/certs:ro
+    depends_on:
+      - backend
+
+networks:
+  default:
+    driver: bridge

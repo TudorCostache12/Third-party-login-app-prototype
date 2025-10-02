@@ -135,7 +135,7 @@ async def auth_callback(code: str = None, state: str = None, error: str = None):
     _sessions[session_id] = claims
 
     
-    response =RedirectResponse(url = config.CALLBACK_URL)
+    response =RedirectResponse(url = config.FRONTEND_CALLBACK_URL)
 
     response.set_cookie(
         key="session_id",
