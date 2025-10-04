@@ -13,7 +13,8 @@ export class AuthResolver implements Resolve<any> {
     return this.http.get('https://localhost:8000/me', { withCredentials: true }).pipe(
       catchError(err => {
         // dacă nu există sesiune → redirect la login
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
+        window.location.href = 'https://localhost:8000/login';
         return EMPTY;  // componenta callback nu se încarcă
       })
     );
